@@ -8,6 +8,7 @@ from profiles_api import serializers
 
 class HelloApiView(APIView):
     serializer_class = serializers.HelloSerializer
+    
     def get(self, request, format=None):
         an_apiview = [
             'uses HTTP methods as function(ger,post,patch,put,delete)',
@@ -26,3 +27,13 @@ class HelloApiView(APIView):
             return Response({'message':message})
         else:
             return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST )
+        
+    def put(self,request, pk=None):
+        
+        return Response( {'method':'PUT'})
+    
+    def patch(self,request, pk=None):
+        return Response( {'method':'PATCH'})
+    def delete(self,request, pk=None):
+        
+        return Response({"method":'DELETE'})
